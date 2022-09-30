@@ -9,6 +9,9 @@ import { MercanciaComponent } from './mercancia/mercancia.component';
 import { HomeComponent } from './home/home.component';
 import { FormularioRegistroComponent } from './formulario-registro/formulario-registro.component';
 
+
+import{ReactiveFormsModule}from '@angular/forms'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,10 +20,12 @@ import { FormularioRegistroComponent } from './formulario-registro/formulario-re
     MercanciaComponent,
     HomeComponent,
     FormularioRegistroComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
