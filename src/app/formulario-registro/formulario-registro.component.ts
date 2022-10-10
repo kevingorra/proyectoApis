@@ -1,3 +1,5 @@
+import { ZonasService } from './../services/zonas.service';
+import { MercanciasService } from './../services/mercancias.service';
 import { Component, OnInit } from '@angular/core';
 import{FormGroup,FormBuilder,Validators} from '@angular/forms'
 
@@ -9,12 +11,26 @@ import{FormGroup,FormBuilder,Validators} from '@angular/forms'
 export class FormularioRegistroComponent implements OnInit {
 
   formulario!:FormGroup;
+  controlDeZona:boolean=true;
+  datosZonas:any[]=[];
 
-  constructor(public fabricaDiccionario:FormBuilder) { }
+  constructor(
+    public fabricaDiccionario:FormBuilder,
+    public servicioMercancias:MercanciasService,
+    public servicioZonas:ZonasService,
+
+    ) { }
 
   ngOnInit(): void {
 
     this.formulario=this.inicializarFormulario()
+    this.servicioZonas.consultarZonas()
+    .subscribe(respuesta=>{
+      this.datosZonas=respuesta.map((zona:any)=>{
+        return {nombre:zona.nombre}
+      })
+    })
+
   }
 
   public analizarFormulario(): void{
@@ -23,22 +39,54 @@ export class FormularioRegistroComponent implements OnInit {
 
   public inicializarFormulario ():FormGroup{
     return this.fabricaDiccionario.group({
-      iup:['123456741',[Validators.required,Validators.minLength(6)]],
-      tiporemitente:['Natural',[Validators.required]],
-      identificacionremitente:['1234565789',[Validators.required]],
-      nombreremitente:['kevin valencia',[Validators.required]],
-      departamentoremitente:['Antioquia',[Validators.required]],
-      municipioremitente:['Medellin',[Validators.required]],
-      direccionremitente:['cr25#45-65',[Validators.required]],
-      tipodestinatario:['Empresa',[Validators.required]],
-      identificaciondestinatario:['235689874',[Validators.required]],
-      nombredestinatario:['Rodoldo ',[Validators.required]],
-      departamentodestinatario:['Huila',[Validators.required]],
-      municipiodestinatario:['oporapa',[Validators.required]],
-      direcciondestinatario:['transversal superior calle 25#4565',[Validators.required]]
+      iup:['',[Validators.required]],//Validators.minLength(6)
+      tiporemitente:['',[Validators.required]],
+      identificacionremitente:['',[Validators.required]],
+      nombreremitente:['',[Validators.required]],
+      departamentoremitente:['',[Validators.required]],
+      municipioremitente:['',[Validators.required]],
+      direccionremitente:['',[Validators.required]],
+      tipodestinatario:['',[Validators.required]],
+      identificaciondestinatario:['',[Validators.required]],
+      nombredestinatario:['',[Validators.required]],
+      departamentodestinatario:['',[Validators.required]],
+      municipiodestinatario:['',[Validators.required]],
+      direcciondestinatario:['',[Validators.required]]
 
     })
 
+  }
+
+  public buscarMercancia(){
+    let iup=this.formulario.value.iup
+    console.log(this.datosZonas)
+  this.servicioMercancias.buscarMercanciaPorId(iup)
+  .subscribe(respuesta=>{
+   this.formulario.patchValue({
+    tiporemitente:respuesta.tipoRemitente,
+    identificacionremitente:respuesta.idRemitente,
+    nombreremitente:respuesta.nombreRemitente,
+    departamentoremitente:respuesta.Remitente,
+    municipioremitente:respuesta.municipioRemitente,
+    direccionremitente:respuesta.direccionRemitente,
+    tipodestinatario:respuesta.tipoDestinatario,
+    identificaciondestinatario:respuesta.idDestinatario,
+    nombredestinatario:respuesta.nombreDestinatario,
+    departamentodestinatario:respuesta.deptoDestinatario,
+    municipiodestinatario:respuesta.municipioDestinatario,
+    direcciondestinatario:respuesta.direccionDestinatario,
+
+   })
+   this.formulario.disable()
+   this.formulario.controls['iup'].enable()
+   this.controlDeZona=false
+  },
+    error=>{console.log(error.error)
+      this.formulario.enable()
+      this.formulario=this.inicializarFormulario()
+      this.controlDeZona=true
+
+    })
   }
 
 

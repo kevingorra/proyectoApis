@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-12 col-md-8">
 
-       
+
           <div class="row">
             <div class="col-12">
               <h1>Ingreso de mercancia</h1>
@@ -17,12 +17,12 @@
             <label class="form-label">IUP :</label>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1"><i class="bi bi-upc-scan"></i></span>
-              <input type="text" class="form-control" placeholder="Codigo de Barras" formControlName="iup">
+              <input type="text" class="form-control" placeholder="Codigo de Barras" formControlName="iup"(blur)="buscarMercancia()">
             </div>
             <div *ngIf="formulario.get('iup')?.touched && formulario.get('iup')?.errors?.['required']" class="form-text text-danger fw-bold">Este campo es obligatorio</div>
             <div *ngIf="formulario.get('iup')?.touched && formulario.get('iup')?.errors?.['minlength']"  class="form-text text-danger fw-bold">Este campo debe tener al menos 6 caracteres</div>
           </div>
-          
+
 
           <div class="mb-3">
             <label class="form-label bold">Remitente :</label>
@@ -43,7 +43,7 @@
 
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-key"></i></span>
-                <input type="text" class="form-control" placeholder="Identificacion" formControlName="identificacionremitente">  
+                <input type="text" class="form-control" placeholder="Identificacion" formControlName="identificacionremitente">
               </div>
               <div *ngIf="formulario.get('identificacionremitente')?.touched && formulario.get('identificacionremitente')?.errors?.['required']" class="form-text text-danger fw-bold">Este campo es obligatorio</div>
 
@@ -118,7 +118,7 @@
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-bounding-box"></i></span>
                 <input type="text" class="form-control" placeholder="Nombre" formControlName="nombredestinatario">
-                
+
               </div>
               <div *ngIf="formulario.get('nombredestinatario')?.touched && formulario.get('nombredestinatario')?.errors?.['required']" class="form-text text-danger fw-bold">Este campo es obligatorio</div>
 
@@ -158,12 +158,11 @@
           </div>
 
           <div class="mb-3">
-            <select class="form-select" aria-label="Default select example" >
-              <option selected>Zona</option>
-              <option value="1">Zona1</option>
-              <option value="2">Zona2</option>
-              <option value="3">Zona3</option>
-              <option value="4">Zona4</option>
+            <select class="form-select" aria-label="Default select example" *ngIf="controlDeZona">
+              <option selected>Seleccione una Zona:</option>
+              <option value=""*ngFor="let zona of datosZonas">{{zona.nombre}}</option>
+
+
 
             </select>
 
@@ -171,7 +170,7 @@
           </div>
 
           <button type="submit" class="btn btn-warning">Registrar</button>
-     
+
 
     </div>
   </div>

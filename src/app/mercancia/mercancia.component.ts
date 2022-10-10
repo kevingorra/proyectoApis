@@ -1,4 +1,6 @@
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-mercancia',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MercanciaComponent implements OnInit {
 
-  constructor() { }
+
 
   ngOnInit(): void {
   }
