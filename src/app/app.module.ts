@@ -12,6 +12,8 @@ import { FormularioRegistroComponent } from './formulario-registro/formulario-re
 
 import{ReactiveFormsModule}from '@angular/forms'
 import{HttpClientModule}from'@angular/common/http'
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { GraficaComponent } from './grafica/grafica.component'
 
 @NgModule({
   declarations: [
@@ -20,14 +22,16 @@ import{HttpClientModule}from'@angular/common/http'
     FooterComponent,
     MercanciaComponent,
     HomeComponent,
-    FormularioRegistroComponent
+    FormularioRegistroComponent,
+    GraficaComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
