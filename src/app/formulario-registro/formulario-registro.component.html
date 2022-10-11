@@ -158,9 +158,9 @@
           </div>
 
           <div class="mb-3">
-            <select class="form-select" aria-label="Default select example" *ngIf="controlDeZona">
-              <option selected>Seleccione una Zona:</option>
-              <option value=""*ngFor="let zona of datosZonas">{{zona.nombre}}</option>
+            <select class="form-select" aria-label="Default select example" *ngIf="controlDeZona" formControlName="zona">
+              
+              <option value={{zona.id}} *ngFor="let zona of datosZonas">{{zona.nombre}}</option>
 
 
 

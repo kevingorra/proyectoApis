@@ -27,14 +27,28 @@ export class FormularioRegistroComponent implements OnInit {
     this.servicioZonas.consultarZonas()
     .subscribe(respuesta=>{
       this.datosZonas=respuesta.map((zona:any)=>{
-        return {nombre:zona.nombre}
+        return {nombre:zona.nombre,id:zona.id}
       })
     })
 
   }
 
   public analizarFormulario(): void{
-    console.log(this.formulario.value)
+    let datosMercancia=this.formulario.value
+    datosMercancia.volumen=10
+    datosMercancia.nombre="Mercancia de prueba"
+    datosMercancia.zona={id:this.formulario.value.zona}
+
+
+    console.log(datosMercancia)
+    this.servicioMercancias.ingresarMercancia(datosMercancia)
+    .subscribe(respuesta=>{
+      console.log(respuesta)
+      window.location.reload()
+    
+    
+    })
+
   }
 
   public inicializarFormulario ():FormGroup{
@@ -51,7 +65,8 @@ export class FormularioRegistroComponent implements OnInit {
       nombredestinatario:['',[Validators.required]],
       departamentodestinatario:['',[Validators.required]],
       municipiodestinatario:['',[Validators.required]],
-      direcciondestinatario:['',[Validators.required]]
+      direcciondestinatario:['',[Validators.required]],
+      zona:['1',[Validators.required]]
 
     })
 
