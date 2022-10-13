@@ -35,7 +35,8 @@ export class FormularioRegistroComponent implements OnInit {
 
   public analizarFormulario(): void{
     let datosMercancia=this.formulario.value
-    datosMercancia.volumen=10
+    datosMercancia.iup=2
+    datosMercancia.volumen=80
     datosMercancia.nombre="Mercancia de prueba"
     datosMercancia.zona={id:this.formulario.value.zona}
 

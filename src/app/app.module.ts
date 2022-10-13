@@ -13,7 +13,12 @@ import { FormularioRegistroComponent } from './formulario-registro/formulario-re
 import{ReactiveFormsModule}from '@angular/forms'
 import{HttpClientModule}from'@angular/common/http'
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { GraficaComponent } from './grafica/grafica.component'
+import { GraficaComponent } from './grafica/grafica.component';
+import { Grafica2Component } from './grafica2/grafica2.component';
+import { EliminarMercanciaComponent } from './eliminar-mercancia/eliminar-mercancia.component';
+import { BuscarMercanciaComponent } from './buscar-mercancia/buscar-mercancia.component';
+import { LoginComponent } from './login/login.component';
+import { InicioComponent } from './inicio/inicio.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +28,12 @@ import { GraficaComponent } from './grafica/grafica.component'
     MercanciaComponent,
     HomeComponent,
     FormularioRegistroComponent,
-    GraficaComponent
+    GraficaComponent,
+    Grafica2Component,
+    EliminarMercanciaComponent,
+    BuscarMercanciaComponent,
+    LoginComponent,
+    InicioComponent
 
   ],
   imports: [

@@ -1,44 +1,6 @@
-<app-menu></app-menu>
-  <div class="container-fluid mt-3">
-    <div class="row">
-
-      <div class="col-6">
-        <app-formulario-registro></app-formulario-registro>
-      </div>
-      <div class="col-6">
-        <div class="row">
-          <div class="col-12">
-            <h2>Disponibilidad:</h2>
-            <app-grafica></app-grafica>
+<app-login></app-login>
 
 
-          </div>
-          <div class="col-12">
-          <h2 class="my-3">Mercancias en Cuarto:</h2>
-          <div class="row row-cols-1 row-cols-md-2 g-3 "*ngFor="let dato of datosZonas">
-            <div class="col my-3"*ngFor="let mercancia of dato.mercancias">
-              
-              <div class="card h-100">
-                <h2 class="text-center text-muted ">{{dato.nombre}}</h2>
-                <h2 class="text-center text-muted">{{mercancia.nombre}}</h2>
-                <h3 class="text-center text-muted">Volumen Ocupado: {{mercancia.volumen}}</h3>
-                <button (click)="retirarMercancia(mercancia.iup)" class="btn btn-primary m-2" type="button">Retirar del Cuarto</button>
-
-              </div>
-             
-             <hr><hr>
-
-            </div>
-
-          </div>
-          </div>
-      </div>
-
-    </div>
-
-
-  </div>
-</div>
 
 
 
