@@ -35,9 +35,7 @@ export class FormularioRegistroComponent implements OnInit {
 
   public analizarFormulario(): void{
     let datosMercancia=this.formulario.value
-    datosMercancia.iup=2
-    datosMercancia.volumen=80
-    datosMercancia.nombre="Mercancia de prueba"
+    
     datosMercancia.zona={id:this.formulario.value.zona}
 
 
@@ -55,18 +53,21 @@ export class FormularioRegistroComponent implements OnInit {
   public inicializarFormulario ():FormGroup{
     return this.fabricaDiccionario.group({
       iup:['',[Validators.required]],//Validators.minLength(6)
-      tiporemitente:['',[Validators.required]],
-      identificacionremitente:['',[Validators.required]],
-      nombreremitente:['',[Validators.required]],
-      departamentoremitente:['',[Validators.required]],
-      municipioremitente:['',[Validators.required]],
-      direccionremitente:['',[Validators.required]],
-      tipodestinatario:['',[Validators.required]],
-      identificaciondestinatario:['',[Validators.required]],
-      nombredestinatario:['',[Validators.required]],
-      departamentodestinatario:['',[Validators.required]],
-      municipiodestinatario:['',[Validators.required]],
-      direcciondestinatario:['',[Validators.required]],
+      volumen:['',[Validators.required]],
+      nombre:['',[Validators.required]],
+      tipoRemitente:['',[Validators.required]],
+      identificacionRemitente:['',[Validators.required]],
+      nombreRemitente:['',[Validators.required]],
+      deptoRemitente:['',[Validators.required]],
+      municipioRemitente:['',[Validators.required]],
+      direccionRemitente:['',[Validators.required]],
+      tipoDestinatario:['',[Validators.required]],
+      identificacionDestinatario:['',[Validators.required]],
+      nombreDestinatario:['',[Validators.required]],
+      deptoDestinatario:['',[Validators.required]],
+      municipioDestinatario:['',[Validators.required]],
+      direccionDestinatario:['',[Validators.required]],
+      ubicacion:['',[Validators.required]],
       zona:['1',[Validators.required]]
 
     })
@@ -79,18 +80,21 @@ export class FormularioRegistroComponent implements OnInit {
   this.servicioMercancias.buscarMercanciaPorId(iup)
   .subscribe(respuesta=>{
    this.formulario.patchValue({
-    tiporemitente:respuesta.tipoRemitente,
-    identificacionremitente:respuesta.idRemitente,
-    nombreremitente:respuesta.nombreRemitente,
-    departamentoremitente:respuesta.Remitente,
-    municipioremitente:respuesta.municipioRemitente,
-    direccionremitente:respuesta.direccionRemitente,
-    tipodestinatario:respuesta.tipoDestinatario,
-    identificaciondestinatario:respuesta.idDestinatario,
-    nombredestinatario:respuesta.nombreDestinatario,
-    departamentodestinatario:respuesta.deptoDestinatario,
-    municipiodestinatario:respuesta.municipioDestinatario,
-    direcciondestinatario:respuesta.direccionDestinatario,
+    nombre:respuesta.nombre,
+    volumen:respuesta.volumen,
+    tipoRemitente:respuesta.tipoRemitente,
+    identificacionRemitente:respuesta.idRemitente,
+    nombreRemitente:respuesta.nombreRemitente,
+    deptoRemitente:respuesta.Remitente,
+    municipioRemitente:respuesta.municipioRemitente,
+    direccionRemitente:respuesta.direccionRemitente,
+    tipoDestinatario:respuesta.tipoDestinatario,
+    identificacionDestinatario:respuesta.idDestinatario,
+    nombreDestinatario:respuesta.nombreDestinatario,
+    deptoDestinatario:respuesta.deptoDestinatario,
+    municipioDestinatario:respuesta.municipioDestinatario,
+    direccionDestinatario:respuesta.direccionDestinatario,
+    ubicacion:respuesta.ubicacion
 
    })
    this.formulario.disable()
@@ -99,7 +103,7 @@ export class FormularioRegistroComponent implements OnInit {
   },
     error=>{console.log(error.error)
       this.formulario.enable()
-      this.formulario=this.inicializarFormulario()
+      // this.formulario=this.inicializarFormulario()
       this.controlDeZona=true
 
     })

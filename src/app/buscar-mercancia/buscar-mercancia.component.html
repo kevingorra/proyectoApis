@@ -11,8 +11,8 @@
 <div class="col-5">
   <form class="d-flex " role="search">
     
-    <input class="form-control me-2" type="search" placeholder="Buscar IUP" aria-label="Search">
-    <button class="btn btn-warning" type="submit">Search</button>
+    <input class="form-control me-2" type="search" placeholder="Buscar IUP" >
+    <button class="btn btn-warning" (click)="buscarMercancia()" type="submit">Search</button>
   </form>
 </div>
       </div>
@@ -22,11 +22,13 @@
       
         <div class="container my-5 mx-5">
 
-          <table class="table table-bordered ">
+          <form >
+
+          <table class="table table-bordered  ">
             <thead>
               <tr>
                 <th scope="col" style="width: 100px;">IUP:</th>
-                <td></td>
+                <td ></td>
               </tr>
             </thead>
             <tbody>
@@ -102,27 +104,14 @@
               </tr>
             </tbody>
           </table>
+        </form>
         </div>
     </div>
-    <div class="col-6 mx-5">
-        <h2 class="my-3">Mercancias en Cuarto:</h2>
-        <div class="row row-cols-1 row-cols-md-2 g-3 "*ngFor="let dato of datosZonas">
-          <div class="col my-3"*ngFor="let mercancia of dato.mercancias">
-            
-            <div class="card h-100">
-              <h2 class="text-center text-muted ">{{dato.nombre}}</h2>
-              <h2 class="text-center text-muted">{{mercancia.nombre}}</h2>
-              <h3 class="text-center text-muted">Volumen Ocupado: {{mercancia.volumen}}</h3>
-              <button (click)="retirarMercancia(mercancia.iup)" class="btn btn-primary m-2" type="button">Retirar del Cuarto</button>
-
-            </div>
-           
-           <hr><hr>
-
-          </div>
-
-        </div>
-
+   <div class="col-5 mx-5 fixed" >
+    <div class="card shadow align-items-end  ">
+      <app-grafica></app-grafica>
     </div>
+    
+   </div>
 </div>
 

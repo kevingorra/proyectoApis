@@ -10,6 +10,8 @@ export class MercanciasService {
   constructor( public peticion:HttpClient) { }
 
   buscarMercanciaPorId(id:any):Observable<any>{
+
+    console.log("hola")
     let uri=`http://localhost:8080/api/tcc/mercancias/${id}`
     return this.peticion.get(uri)
   }
