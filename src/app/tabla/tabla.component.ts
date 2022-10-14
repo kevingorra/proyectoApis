@@ -66,7 +66,7 @@ export class TablaComponent implements OnInit {
       municipioDestinatario:['',[Validators.required]],
       direccionDestinatario:['',[Validators.required]],
       ubicacion:['',[Validators.required]],
-      zona:['1',[Validators.required]]
+      zona:['',[Validators.required]]
 
     })
 

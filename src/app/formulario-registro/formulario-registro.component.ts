@@ -2,6 +2,7 @@ import { ZonasService } from './../services/zonas.service';
 import { MercanciasService } from './../services/mercancias.service';
 import { Component, OnInit } from '@angular/core';
 import{FormGroup,FormBuilder,Validators} from '@angular/forms'
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-formulario-registro',
@@ -56,13 +57,13 @@ export class FormularioRegistroComponent implements OnInit {
       volumen:['',[Validators.required]],
       nombre:['',[Validators.required]],
       tipoRemitente:['',[Validators.required]],
-      identificacionRemitente:['',[Validators.required]],
+      idRemitente:['',[Validators.required]],
       nombreRemitente:['',[Validators.required]],
       deptoRemitente:['',[Validators.required]],
       municipioRemitente:['',[Validators.required]],
       direccionRemitente:['',[Validators.required]],
       tipoDestinatario:['',[Validators.required]],
-      identificacionDestinatario:['',[Validators.required]],
+      idDestinatario:['',[Validators.required]],
       nombreDestinatario:['',[Validators.required]],
       deptoDestinatario:['',[Validators.required]],
       municipioDestinatario:['',[Validators.required]],
@@ -83,13 +84,13 @@ export class FormularioRegistroComponent implements OnInit {
     nombre:respuesta.nombre,
     volumen:respuesta.volumen,
     tipoRemitente:respuesta.tipoRemitente,
-    identificacionRemitente:respuesta.idRemitente,
+    idRemitente:respuesta.idRemitente,
     nombreRemitente:respuesta.nombreRemitente,
     deptoRemitente:respuesta.Remitente,
     municipioRemitente:respuesta.municipioRemitente,
     direccionRemitente:respuesta.direccionRemitente,
     tipoDestinatario:respuesta.tipoDestinatario,
-    identificacionDestinatario:respuesta.idDestinatario,
+    idDestinatario:respuesta.idDestinatario,
     nombreDestinatario:respuesta.nombreDestinatario,
     deptoDestinatario:respuesta.deptoDestinatario,
     municipioDestinatario:respuesta.municipioDestinatario,
@@ -107,6 +108,14 @@ export class FormularioRegistroComponent implements OnInit {
       this.controlDeZona=true
 
     })
+  }
+
+  lanzarAlerta(){
+    Swal.fire(
+  'Good job!',
+  'You clicked the button!',
+  'success'
+)
   }
 
 
