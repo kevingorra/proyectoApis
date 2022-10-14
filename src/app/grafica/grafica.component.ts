@@ -24,7 +24,7 @@ export class GraficaComponent  {
     group:ScaleType.Ordinal,
 
 
-    domain: ['#75F38A', '#FFF000', '#FF1700', '#005DFF','#000000' ]
+    domain: ['#75F38A', '#FFF000', '#FF1700', '#005DFF','#000000','#0daeff', ]
   };
 
   disponibilidades:any[]=[]

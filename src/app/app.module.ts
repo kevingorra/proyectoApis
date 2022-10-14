@@ -18,7 +18,10 @@ import { Grafica2Component } from './grafica2/grafica2.component';
 import { EliminarMercanciaComponent } from './eliminar-mercancia/eliminar-mercancia.component';
 import { BuscarMercanciaComponent } from './buscar-mercancia/buscar-mercancia.component';
 import { LoginComponent } from './login/login.component';
-import { InicioComponent } from './inicio/inicio.component'
+import { InicioComponent } from './inicio/inicio.component';
+import { TablaComponent } from './tabla/tabla.component';
+import { RegistroZonaComponent } from './registro-zona/registro-zona.component';
+import { ZonaFormularioComponent } from './zona-formulario/zona-formulario.component'
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { InicioComponent } from './inicio/inicio.component'
     EliminarMercanciaComponent,
     BuscarMercanciaComponent,
     LoginComponent,
-    InicioComponent
+    InicioComponent,
+    TablaComponent,
+    RegistroZonaComponent,
+    ZonaFormularioComponent
 
   ],
   imports: [

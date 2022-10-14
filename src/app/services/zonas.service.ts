@@ -15,6 +15,11 @@ public consultarZonas():Observable<any>{
 return this.peticion.get(uri)
 }
 
+ingresarZona(datosZona:any):Observable<any>{
+  let uri=`http://localhost:8080/api/tcc/zonas`
+  return this.peticion.post(uri,datosZona)
+}
+
 
 
 
